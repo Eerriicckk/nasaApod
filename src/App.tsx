@@ -67,8 +67,8 @@ function App() {
 				<NavBar>
 					<h4 className='textOverImage'>Aperte para pesquisar a imagem do dia</h4>
 					<div style={{
-						display:'flex',
-						flexDirection:'row'
+						display: 'flex',
+						flexDirection: 'row'
 					}}>
 						<span className='textOverImage'>Data da imagem</span>
 						<Button onClick={() => changeDate(-1)} message="anterior">{"<"}</Button>
@@ -89,7 +89,9 @@ function App() {
 				</NavBar>
 				{loading ? <Loading /> :
 					<div style={{ height: "100%" }}>
-						{infoApod.url !== "" &&
+						{!infoApod.url ?
+							<h1 className='textOverImage'>Imagem não encontrada</h1>
+							:
 							<div style={{ height: "100%", textAlign: "center" }}>
 								{infoApod.media_type === "image" ?
 									<ImageInfo data={infoApod} isHd={imageInHd} />
