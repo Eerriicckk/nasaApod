@@ -1,0 +1,11 @@
+pipeline:
+  # Stage 1: Build da imagem Docker
+  build:
+    image: docker:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker build -t nasaapod:${CI_COMMIT_SHA:0:7} .
+      - docker tag nasaapod:${CI_COMMIT_SHA:0:7} nasaapod:latest
+    when:
+      branch: main
