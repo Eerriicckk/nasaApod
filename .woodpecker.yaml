@@ -1,4 +1,4 @@
-pipeline:
+steps:
   # Stage 1: Build da imagem Docker
   build:
     image: docker:latest
