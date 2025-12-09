@@ -9,3 +9,14 @@ steps:
       - docker tag nasaapod:${CI_COMMIT_SHA:0:7} nasaapod:latest
     when:
       branch: main
+  run:
+    image: docker:26
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker stop nasaapod || true
+      - docker rm nasaapod || true
+      - docker run -d \
+          --name nasaapod \
+          -p 5173:5173 \
+          nasaapod:latest
