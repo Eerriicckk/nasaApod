@@ -16,7 +16,4 @@ steps:
     commands:
       - docker stop nasaapod || true
       - docker rm nasaapod || true
-      - docker run -d \
-          --name nasaapod \
-          -p 5173:5173 \
-          nasaapod:latest
+      - docker run -d --name nasaapod -p 5173:5173 nasaapod:latest
